@@ -24,16 +24,16 @@ if (compareEnv(text, "env") == 0)
 while (*environ != NULL)
 {
 if (!(_strcmpdir(*environ, "USER")) ||
-	!(_strcmpdir(*environ, "LANGUAGE")) ||
-	!(_strcmpdir(*environ, "SESSION")) ||
-	!(_strcmpdir(*environ, "COMPIZ_CONFIG_PROFILE")) ||
-	!(_strcmpdir(*environ, "SHLV")) ||
-	!(_strcmpdir(*environ, "HOME")) ||
-	!(_strcmpdir(*environ, "C_IS")) ||
-	!(_strcmpdir(*environ, "DESKTOP_SESSION")) ||
-	!(_strcmpdir(*environ, "LOGNAME")) ||
-	!(_strcmpdir(*environ, "TERM")) ||
-	!(_strcmpdir(*environ, "PATH")))
+!(_strcmpdir(*environ, "LANGUAGE")) ||
+!(_strcmpdir(*environ, "SESSION")) ||
+!(_strcmpdir(*environ, "COMPIZ_CONFIG_PROFILE")) ||
+!(_strcmpdir(*environ, "SHLV")) ||
+!(_strcmpdir(*environ, "HOME")) ||
+!(_strcmpdir(*environ, "C_IS")) ||
+!(_strcmpdir(*environ, "DESKTOP_SESSION")) ||
+!(_strcmpdir(*environ, "LOGNAME")) ||
+!(_strcmpdir(*environ, "TERM")) ||
+!(_strcmpdir(*environ, "PATH")))
 {
 place(*environ), place("\n"); }
 environ++; }}
