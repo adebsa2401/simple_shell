@@ -1,17 +1,16 @@
 #include "main.h"
 
 /**
- * main - func with infinite loop
+ * main - main
  * @ac: No use
  * @av: No use
- * Return: loop.
+ * Return: 0.
  **/
 int main(int ac, char **av)
 {
-	(void)av;
-	(void)ac;
-
-	signal(SIGINT, controlC);
-	prompt();
-	return (0);
+(void)av;
+(void)ac;
+signal(SIGINT, controlC);
+prompt();
+return (0);
 }
