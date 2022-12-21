@@ -1,89 +1,75 @@
-#include "main.h"
+#include "shell.h"
+
 /**
- * _strcmpdir - strcmpdir
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
  *
- * @s1: string.
- * @s2: string.
- *
- * Return: int
- **/
-int _strcmpdir(char *s1, char *s2)
-{
-int i = 0;
-for (; (*s2 != '\0' && *s1 != '\0') && *s1 == *s2; s1++)
-{
-if (i == 3)
-break;
-i++;
-s2++;
-}
-return (*s1 - *s2);
-}
-/**
- * charput - charput
- * @c: The character to print
- *
- * Return: int
+ * Return: integer length of string
  */
-int charput(char c)
+int _strlen(char *s)
 {
-return (write(1, &c, 1));
+	int i = 0;
+
+	if (!s)
+		return (0);
+
+	while (*s++)
+		i++;
+	return (i);
 }
 
 /**
- * place - similar to puts in C
- * @str: a pointer the integer we want to set to 402
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
  *
- * Return: int
+ * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-void place(char *str)
+int _strcmp(char *s1, char *s2)
 {
-while (*str != '\0')
-{
-charput(*str);
-str++;
-}
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	if (*s1 == *s2)
+		return (0);
+	else
+		return (*s1 < *s2 ? -1 : 1);
 }
 
 /**
- * _strlen - Len string.
- * @str: My string.
- * Return: Length.
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
+ *
+ * Return: address of next char of haystack or NULL
  */
-int _strlen(char *str)
+char *starts_with(const char *haystack, const char *needle)
 {
-int i;
-for (i = 0; str[i] != '\0'; i++)
-;
-return (i);
+	while (*needle)
+		if (*needle++ != *haystack++)
+			return (NULL);
+	return ((char *)haystack);
 }
 
 /**
- * str_concat - concatane strings.
- * @s1: string.
- * @s2: second string.
- * Return: strings.
+ * _strcat - concatenates two strings
+ * @dest: the destination buffer
+ * @src: the source buffer
+ *
+ * Return: pointer to destination buffer
  */
-char *str_concat(char *s1, char *s2)
+char *_strcat(char *dest, char *src)
 {
-char *a;
-int lens1, lens2, j, i, e;
-if (s1 == NULL)
-s1 = "";
-if (s2 == NULL)
-s2 = "";
-lens1 = _strlen(s1);
-lens2 = _strlen(s2);
-a = malloc(((lens1) + (lens2) + 1) * sizeof(char));
-if (a == NULL)
-return (NULL);
-for (j = 0; j < lens1; j++)
-{
-a[j] = s1[j];
-}
-for (i = lens1, e = 0; e <= lens2; i++, e++)
-{
-a[i] = s2[e];
-}
-return (a);
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
 }
